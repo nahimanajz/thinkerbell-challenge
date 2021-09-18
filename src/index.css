@@ -6,8 +6,63 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.keyboard{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+}
+.row, .word-board{
+  display: inline-flex;
+  gap: 8px;
+
+}
+span {
+  border: 1px solid #eee;
+  box-shadow: 0 3px 3px #ccc;
+  padding: 16px;
+}
+.word-board {
+  background:#E8E8E8;
+  padding: 16px 32px;
+  gap: 16px;
+  box-shadow: 0 3px 3px #ccc;
+
+
+}
+.word {
+  border: 2px solid #000;
+  border-radius: 4px;
+  background-color: #F4F4F4;
+
+}
+.level,.score, .multiplier{
+ min-width: 300px;
+ height: 100px;
+ align-items: center;
+ text-align: center;
+ color: #fff;
+}
+.level{
+  background:#6ab1d9 ;
+  border-radius: 68px;
+}
+.score{
+  background:#95bc6a ;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+.multiplier{
+  background-color: #7a65d1;
+  
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.res-container{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+#root {
+ display: grid;
+ top: 29px;
 }
