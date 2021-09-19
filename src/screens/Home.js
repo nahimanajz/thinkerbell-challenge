@@ -9,14 +9,45 @@ function Home() {
     const[typed, setCharacer]= useState('')
     const characters = ["q","w","e","r","t","Y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"]
     const strings = characters.toString().toUpperCase().split(',')
-    const words = ["is","more", "sophisticated"]
+    const [words, setWords] = useState([{
+        completed:false,
+        text:'is',
+        level:1
+    },
+    {
+        completed:false,
+        text:'more',
+        level:2
+    },
+    {
+        completed:false,
+        text:'sophisticated',
+        level:3
+    }
+])
     const keypressedColor='#F5D466'
-    //Todo: correct input from user and compare it with word which  is written
     const [typedWord, setTypedWord] = useState('')
     
     const handleType = e => setCharacer(e.key.toUpperCase())
-    useEffect(()=> setTypedWord(typedWord.concat(typed)), [typed])
-
+    const matchWords=()=> {
+        if(typedWord.concat(typed) === words[0].text.toUpperCase() ){            
+           setWords(words.filter(word=> word.text.toUpperCase() !== typedWord.concat(typed)&&
+           {...word, completed:true}))
+         setTypedWord('')
+           
+        }
+    }
+ 
+    useEffect(()=> {
+        setTypedWord(typedWord.concat(typed))
+        matchWords()
+       
+    }, [typed])
+/**
+ *  correct word from user and compare it with current word which is on index zero
+ *  if it matches add a point to a user else reset word
+ * run how to check user typing speed
+ */
     return (
         <>
         <div>typed word is{typedWord}</div>
@@ -25,7 +56,7 @@ function Home() {
             <Score />
             <Multiplier />
         </div>
-        <QuestionBoard words={words}/>
+        <QuestionBoard words={words && words.filter(({text, completed})=> !completed)}/>
     <div className="keyboard">    
     <input  onKeyPress={handleType} autoFocus={true} style={{opacity:0}} />    
         <div className="row">
