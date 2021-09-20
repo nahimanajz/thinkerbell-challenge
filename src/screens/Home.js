@@ -26,6 +26,7 @@ function Home() {
         level:3
     }
 ])
+    const [results, setResults] = useState({})
     const [typedWord, setTypedWord] = useState('')
     
     const handleType = e => setCharacer(e.key.toUpperCase())
@@ -55,20 +56,26 @@ function Home() {
         matchWords()
         resetUnmatchingWords()
         console.log(words)
+        let score = typedWord.concat(typed) === words[0].text.toUpperCase()?(results.level*results.multiplier)+results.score :results.score
+        setResults({
+            level:words[0].level,
+            multiplier:words[0].level,
+            score: score||0,
+        })
     }, [typed])
 
     return (
         <>
             <div>typed word is{typedWord}</div>             
                 <input onKeyPress={handleType} autoFocus={true} style={{opacity:0}} />    
-                <LeaderBoard />
+                <LeaderBoard results={results}/>
             {!words.length ?<button onClick={handleSubmit}>Submit</button>:(
                 <>
                     <QuestionBoard words={words && words.filter(({text, completed})=> !completed)}/>
                     <Keyboard strings={strings} typed={typed} />
                 </> 
             )}
-            <Welcome />
+            {/* <Welcome /> */}
         
         </>
   );

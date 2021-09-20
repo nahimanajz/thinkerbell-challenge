@@ -8,12 +8,13 @@ import Multiplier from './Multiplier'
  * Max level reached
  * Top ten scores
  *  */
-export default function LeaderBoard(){
+export default function LeaderBoard({results}){
+    const {level, score, multiplier} = results
     return (
         <div className="res-container">
-            <Level />
-            <Score />
-            <Multiplier />
+            <Level level={level} />
+            <Score score={score} />
+            <Multiplier multiplier={multiplier} />
         </div>
 
     )

@@ -1,8 +1,8 @@
 
-function Multiplier() {
+function Multiplier({multiplier}) {
   return (
      <div className="multiplier">
-         <h3>3X</h3>
+         <h3>{multiplier}X</h3>
      </div>
   );
 }
