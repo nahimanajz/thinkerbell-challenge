@@ -1,9 +1,10 @@
 
 import { useEffect, useState } from 'react';
-import Level from '../components/Level'
-import Score from '../components/Score'
-import Multiplier from '../components/Multiplier'
+
 import QuestionBoard from '../components/QuestionBoard';
+import Keyboard from '../components/Keyboard';
+import LeaderBoard from '../components/LeaderBoard';
+import Welcome from './Welcome';
 
 function Home() {
     const[typed, setCharacer]= useState('')
@@ -25,10 +26,12 @@ function Home() {
         level:3
     }
 ])
-    const keypressedColor='#F5D466'
     const [typedWord, setTypedWord] = useState('')
     
     const handleType = e => setCharacer(e.key.toUpperCase())
+    const handleSubmit =() =>{
+      // Save Result in DB
+    }
     const matchWords=()=> {
         if(typedWord.concat(typed) === words[0].text.toUpperCase() ){            
            setWords(words.filter(word=> word.text.toUpperCase() !== typedWord.concat(typed)&&
@@ -37,49 +40,37 @@ function Home() {
            
         }
     }
+    const resetUnmatchingWords = () =>{      
+        if(typedWord.concat(typed) !== words[0].text.toUpperCase()
+          && typedWord.concat(typed).length >= words[0].text.toUpperCase().length
+        ){
+            setWords(words.filter(word=> word.text.toUpperCase() !== typedWord.concat(typed)&&
+           {...word, completed:false}))
+         setTypedWord('')
+        } 
+    }
  
     useEffect(()=> {
         setTypedWord(typedWord.concat(typed))
         matchWords()
-       
+        resetUnmatchingWords()
+        console.log(words)
     }, [typed])
-/**
- *  correct word from user and compare it with current word which is on index zero
- *  if it matches add a point to a user else reset word
- * run how to check user typing speed
- */
+
     return (
         <>
-        <div>typed word is{typedWord}</div>
-        <div className="res-container">
-            <Level />
-            <Score />
-            <Multiplier />
-        </div>
-        <QuestionBoard words={words && words.filter(({text, completed})=> !completed)}/>
-    <div className="keyboard">    
-    <input  onKeyPress={handleType} autoFocus={true} style={{opacity:0}} />    
-        <div className="row">
-           {strings.map((char, index)=> index<10 && (
-              <span style={{background:`${typed === char?keypressedColor:''}`}} key={char}>{char}</span> 
-           ))}
-        </div>
-        <div className="row">
-         {strings.map((char, index)=> index>9 && index<19 && (
-              <span style={{background:`${typed === char?keypressedColor:''}`}} key={char}>
-                  {index ===16|| index===13 ?<u> {`${char}`}</u>:char}
-                </span> 
-           ))}
-        </div>
-        <div className="row">
-            {strings.map((char, index)=> index>18&& (
-              <span style={{background:`${typed === char?keypressedColor:''}`}} key={char}>
-                  {char}
-              </span> 
-            ))}
-        </div>
-    </div>
-</>
+            <div>typed word is{typedWord}</div>             
+                <input onKeyPress={handleType} autoFocus={true} style={{opacity:0}} />    
+                <LeaderBoard />
+            {!words.length ?<button onClick={handleSubmit}>Submit</button>:(
+                <>
+                    <QuestionBoard words={words && words.filter(({text, completed})=> !completed)}/>
+                    <Keyboard strings={strings} typed={typed} />
+                </> 
+            )}
+            <Welcome />
+        
+        </>
   );
 }
 

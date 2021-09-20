@@ -7,3 +7,6 @@ Declare string of sentence,
 Declare variable multiplier, if level1=1, leve2?multiplier=2, level3=multiplier3,
 Results = number of Correct words(X) multiplier
 
+## workflow
+ - last question 
+ - show save button [saved result has to be saved in dab]

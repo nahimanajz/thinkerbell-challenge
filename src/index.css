@@ -6,35 +6,39 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*:root{
+  --bg-green:#95bc6a
+}
 .keyboard{
   display: flex;
   flex-direction: column;
   gap: 20px;
-
+ 
 }
 .row, .word-board{
   display: inline-flex;
-  gap: 8px;
-
+  gap: 16px;
+  align-items: center;
+  align-self: center;
+}
+.word-board {
+  margin:32px 64px;
 }
 span {
   border: 1px solid #eee;
   box-shadow: 0 3px 3px #ccc;
-  padding: 16px;
+  padding: 28px;
 }
 .word-board {
   background:#E8E8E8;
   padding: 16px 32px;
   gap: 16px;
   box-shadow: 0 3px 3px #ccc;
-
-
 }
 .word {
   border: 2px solid #000;
   border-radius: 4px;
   background-color: #F4F4F4;
-
 }
 .level,.score, .multiplier{
  min-width: 300px;
@@ -42,6 +46,9 @@ span {
  align-items: center;
  text-align: center;
  color: #fff;
+}
+.multiplier,.score,.level{
+  box-shadow: 0 3px 3px #ccc;
 }
 .level{
   background:#6ab1d9 ;
@@ -53,7 +60,6 @@ span {
 }
 .multiplier{
   background-color: #7a65d1;
-  
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 .res-container{
@@ -65,4 +71,43 @@ span {
 #root {
  display: grid;
  top: 29px;
+}
+.welcome{
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  place-items: center;
+  background:rgba(255, 255, 255, 0.5);
+}
+
+.loader {
+  min-height: 40vh;
+  width: 500px;
+  background: var(--bg-green);
+  font-size: 25px;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium';
+  color: white;
+  padding: 16px;
+ border-radius: 16px;
+ animation: welcome 3s step-end;
+}
+@keyframes welcome{
+  0%{
+   opacity: 0;
+  }
+
+  99%{
+   opacity: 1;
+  }
+}
+
+.loader>button{
+ background:white;
+ padding: 16px;
+ position: absolute;
+ border-radius: 8px;
+ border: 0;
 }
