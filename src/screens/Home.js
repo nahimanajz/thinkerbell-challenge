@@ -1,15 +1,18 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import QuestionBoard from '../components/QuestionBoard';
-import Keyboard from '../components/Keyboard';
-import LeaderBoard from '../components/LeaderBoard';
+import QuestionBoard from '../components/QuestionBoard'
+import Keyboard from '../components/Keyboard'
+import LeaderBoard from '../components/LeaderBoard'
 import Welcome from './Welcome';
 import axios from 'axios';
-import TenPlayedGames from './TenPlayedGames';
-import { data, initData } from '../util/initData'
+import TenPlayedGames from './TenPlayedGames'
+import { initData } from '../util/initData'
 
-//set some trending character if a world contains that character add bonus
+// Todo: add sound 
+// Add trending characters  to add bonus
+// host it and submit 
+//add instruction on game begin
 function Home() {
     const[typed, setCharacer]= useState('')
     const characters = ["q","w","e","r","t","Y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"]
@@ -22,11 +25,7 @@ function Home() {
     const handleType = e => setCharacer(e.key.toUpperCase())
     
     const handleSubmit = async () =>{
-      // Save Result in DB
-     
      const { data } = await axios.post(`http://127.0.0.1:5000/api/results`, results)
-    
-     // fetch 10 records 
      if(data){
          const {data:tenGames} =  await axios.get(`http://127.0.0.1:5000/api/results`) 
          setGames(tenGames)
@@ -40,18 +39,15 @@ function Home() {
            
         }
     }
-    const resetUnmatchingWords = () =>{ 
-        //check unmatching word
-        //save current progress
-        // reset the game     
+    const resetUnmatchingWords = () =>{   
         if(typedWord.concat(typed) !== words[0].text.toUpperCase()
           && typedWord.concat(typed).length >= words[0].text.toUpperCase().length
         ){
-            setWords(words.filter(word=> word.text.toUpperCase() !== typedWord.concat(typed)&&
-           {...word, completed:false}))
          setTypedWord('')
+         return (results && words.length)?setWords(''):setWords(words)
         } 
     }
+
     const resetGame = () =>{ 
         setWords(initData)
         setGames(null)

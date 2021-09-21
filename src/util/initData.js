@@ -2,7 +2,7 @@ export  const initData=[{
     completed:false,
     text:'is',
     level:1
-}/*,
+},
 {
     completed:false,
     text:'more',
@@ -12,5 +12,5 @@ export  const initData=[{
     completed:false,
     text:'sophisticated',
     level:3
-}  */
+}  
 ]
