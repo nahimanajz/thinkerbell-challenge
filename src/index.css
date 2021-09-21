@@ -111,3 +111,19 @@ span {
  border-radius: 8px;
  border: 0;
 }
+button{
+  background: var(--bg-green);
+  color: white;
+  height: 60px;
+  width: 400px;
+  font-size: xx-large;
+  align-self: center;
+  border: 0;
+  margin: 40px 64px;
+ border-radius: 16px;
+}
+.statitstics {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

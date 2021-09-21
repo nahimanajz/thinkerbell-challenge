@@ -14,7 +14,10 @@ class Score {
         }).catch(error=>res.send(error))
     }
     async all(req, res){
-        return res.send({data: await Result.find()})
+        return res.send({
+            data: await Result.find().sort({'score':-1}),
+          
+        })
     }
 }
 export default new Score();
