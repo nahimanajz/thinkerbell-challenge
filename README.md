@@ -1,12 +1,23 @@
-Declare variable of all consonants
-    set background to yellow if typed character=== currecter on keyboard
-Declare string of sentence,
-   separate words.length <3, to easy level
-    words.length>3 && <=5, to level 2 (medium level)
-    words >5 , level 3, or difficulty level
-Declare variable multiplier, if level1=1, leve2?multiplier=2, level3=multiplier3,
-Results = number of Correct words(X) multiplier
+# Word Race
+This is a game of typing on keyboard words that appears on your screen,
+you can be given a bonus by writing a word that is has character mentioned in trending characters enjoy the game by visiting this [link](https://wordrace-jz.herokuapp.com/)
 
-## workflow
- - last question 
- - show save button [saved result has to be saved in dab]
+## Technologies used
+ - ReactJs
+ - HTML5 
+ - CSS3
+ - Mongodb
+ - NODEJS and ExpressJS
+ ## INSTALLATION GUIDE
+ ```
+ npm start
+  cd backend && npm install
+  npm start
+```
+### Related React(Js/Native) Apps
+ - [would-you-rather-game](https://would-you-rather-jz.netlify.app/)
+ - [iManage](https://imanage.netlify.app/)
+ - [Flashcards](https://github.com/nahimanajz/mobile-flashcards)
+ - [My-Reads](https://myreadsz.netlify.app/)
+
+Hope you enjoyed the game
