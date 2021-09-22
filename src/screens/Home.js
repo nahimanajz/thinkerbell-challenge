@@ -9,10 +9,6 @@ import TenPlayedGames from './TenPlayedGames'
 import { bonus, initData, trendingChar } from '../util/initData'
 import useSound from 'use-sound';
 
-// Todo: add sound 
-// Add trending characters  to add bonus
-// host it and submit 
-//add instruction on game begin
 function Home() {
     const[typed, setCharacer]= useState('')
     const characters = ["q","w","e","r","t","Y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"]

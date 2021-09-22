@@ -80,6 +80,7 @@ span {
   position: fixed;
   place-items: center;
   background:rgba(255, 255, 255, 0.5);
+  
 }
 
 .loader {
@@ -91,11 +92,11 @@ span {
   color: white;
   padding: 16px;
  border-radius: 16px;
- animation: welcome 1.5s ease-in-out;
+ animation: welcome .5s ease-in-out;
 }
 @keyframes welcome{
 from{
-  min-height: 40vh;
+  height: 40vh;
   width: 500px;
   }
   to{
@@ -135,3 +136,11 @@ button{
  margin: 0 128px;
   
 }
+ .start { 
+   color: var(--bg-green);
+   text-decoration: none;
+   border-radius: 8px;
+   background: white;
+   padding:16px 32px;
+   margin-bottom: 32px;
+  }
