@@ -6,6 +6,7 @@ function QuestionBoard({words}) {
             {words.map(({text})=> (
                 <span className="word" key={text}>{text}</span>
             ))}
+            
         </div>
     );
   }
