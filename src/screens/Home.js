@@ -44,7 +44,11 @@ function Home() {
           && typedWord.concat(typed).length >= words[0].text.toUpperCase().length
         ){
          setTypedWord('')
-         return (results && words.length)?setWords(''):setWords(words)
+         if (results && words.length){
+            setWords(words)   
+         }
+            setGames(null)
+            setWords('')
         } 
     }
 
